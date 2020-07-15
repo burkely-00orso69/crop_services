@@ -1,0 +1,11 @@
+# /etc/systemd/system/crop_clean.timer
+## THESE DO NOT WORK. systemd path is not recursive
+[Unit]
+Description=crop clean
+After=network-online.target
+
+[Path]
+PathChanged=/mnt/remote
+
+[Install]
+WantedBy=timers.target
