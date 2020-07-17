@@ -7,12 +7,8 @@ After=network-online.target
 User=1000
 Group=1000
 Type=oneshot
-WorkingDirectory=/opt/crop/
-ExecStartPre=pgrep -a crop | grep -v -e 'crop (clean|sync)' | cut -d ' ' -f 1 | xargs kill
-ExecStart=/opt/crop/crop clean
+ExecStart=bash -c "/usr/bin/pgrep -f 'crop clean' || /opt/crop/crop clean"
 ExecStopPost=/bin/rm -rf /opt/crop/crop.lock
-Restart=always
-RestartSec=10
 
 [Install]
 WantedBy=default.target
