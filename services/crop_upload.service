@@ -6,8 +6,8 @@ After=network-online.target
 [Service]
 User=1000
 Group=1000
-Type=oneshot
-ExecStart=bash -c "/usr/bin/pgrep -f 'crop upload' || /opt/crop/crop upload"
+Type=exec
+ExecStart=/opt/crop/crop upload
 ExecStopPost=/bin/rm -rf /opt/crop/crop.lock
 
 [Install]
