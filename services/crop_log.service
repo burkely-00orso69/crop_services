@@ -1,0 +1,14 @@
+# /etc/systemd/system/crop_log.service
+[Unit]
+Description=crop log
+After=network-online.target
+
+[Service]
+User=1000
+Group=1000
+Type=simple
+ExecStart=bash -c "tail -f /opt/crop/activity.log | grep -i error | apprise -t 'crop' --config=~/.config/apprise.crop.yml"
+# setup a config file https://github.com/caronc/apprise#configuration-files
+
+[Install]
+WantedBy=default.target
