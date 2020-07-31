@@ -1,4 +1,5 @@
 # /etc/systemd/system/crop_log.service
+# NOT WORKING
 [Unit]
 Description=crop log
 After=network-online.target
